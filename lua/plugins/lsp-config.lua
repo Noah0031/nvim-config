@@ -12,6 +12,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"clangd",
+					"pylsp",
 				}
 			})
 		end
@@ -23,6 +24,19 @@ return {
 
 			lspconfig.lua_ls.setup({})
 			lspconfig.clangd.setup({})
+
+			lspconfig.pylsp.setup({
+				settings = {
+					pylsp = {
+						plugins = {
+							pycodestyle = {
+								disable = { 'W391' },
+								maxLineLength = 100
+							}
+						}
+					}
+				}
+			})
 
 			vim.diagnostic.config({ virtual_text = true })
 
